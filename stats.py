@@ -4,7 +4,7 @@ def number_of_words(text):
     output = ""
     for word in words:
         number += 1
-    output = f"{number} words found in the document"
+    output = f"Found {number} total words"
     return output
 
 def character_breakdown(text):
@@ -20,3 +20,18 @@ def character_breakdown(text):
             char_counts[char] = 1
     
     return char_counts
+
+def sort_on(dict):
+    return dict["count"]
+
+def sort_characters(dictionary):
+    output_list = []
+    for character in dictionary:
+        if character.isalpha():
+            processed_dictionary = {
+                "char" : character,
+                "count" : dictionary[character]
+            }
+            output_list.append(processed_dictionary)
+    output_list.sort(reverse=True,key=sort_on)
+    return output_list
